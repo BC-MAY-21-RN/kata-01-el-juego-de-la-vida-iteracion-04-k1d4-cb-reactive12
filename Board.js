@@ -24,8 +24,7 @@ class Board {
     }
 
     scanBoard(boardTbl, row, column) {
-        let cellsToKill = []
-        let cellsToRevive = []
+        let cellsModified = []
 
         for (let i = 0; i < row; i++) {
             for (let j = 0; j < column; j++) {
@@ -33,29 +32,24 @@ class Board {
                 if (boardTbl[i][j] == 1) {
                     let count = currentCell.getNeighbour(boardTbl, row, column)
                     if (count < 2 || count > 3)
-                        cellsToKill.push([i, j])
+                        cellsModified.push([i, j, 0])
                 }
                 else {
                     if (currentCell.getNeighbour(boardTbl, row, column) == 3) {
-                        cellsToRevive.push([i, j])
+                        cellsModified.push([i, j, 1])
                     }
                 }
             }
         }
-        return { cellsToKill, cellsToRevive }
+        return cellsModified
     }
 
     calcNextGen() {
         let life = this.scanBoard(this.table, this.row, this.column)
 
-        life.cellsToKill.forEach(cell => {
-            const [x, y] = cell
-            this.table[x][y] = 0
-        })
-
-        life.cellsToRevive.forEach(cell => {
-            const [x, y] = cell
-            this.table[x][y] = 1
+        life.cellsModified.forEach(cell => {
+            const [x, y, state] = cell
+            this.table[x][y] = state
         })
     }
 }

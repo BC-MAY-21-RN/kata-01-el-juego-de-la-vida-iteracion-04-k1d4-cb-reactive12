@@ -20,8 +20,7 @@ test('Quantity of cell neighbours are recieved correctly', () => {
 })
 
 test('Define if the cells should live or die', () => {
-    expect(testBoard.scanBoard(tablero, 4, 8).cellsToKill).toStrictEqual([])
-    expect((testBoard.scanBoard(tablero, 4, 8).cellsToRevive)).toStrictEqual([[1, 3]])
+    expect(testBoard.scanBoard(tablero, 4, 8)).toStrictEqual([[1, 3, 1]])
 })
 
 test('Size of the Board matches the props', () => {
