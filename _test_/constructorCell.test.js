@@ -1,9 +1,12 @@
 const { Cell } = require('../Cell')
 const { Board } = require('../Board')
 
-test('Cell position is a number', () => {
-    let test = new Cell(0, 1)
-    expect((isNaN(test.x)) && (isNaN(test.y))).toBe(false)
+let testCell = new Cell(0, 1)
+let testBoard = new Board(4, 4)
+
+test('Provided props are numbers', () => {
+    expect((isNaN(testBoard.row)) && (isNaN(testBoard.column))).toBe(false)
+    expect((isNaN(testCell.x)) && (isNaN(testCell.y))).toBe(false)
 })
 
 test('Quantity of cell neighbours are recieved correctly', () => {
