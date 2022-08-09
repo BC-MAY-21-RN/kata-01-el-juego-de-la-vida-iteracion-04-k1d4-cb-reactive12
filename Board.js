@@ -23,24 +23,7 @@ export default class Board {
         return array1
     }
 
-    scanBoard(boardTbl, row, column) {
-        // let cellsModified = []
-
-        // for (let i = 0; i < row; i++) {
-        //     for (let j = 0; j < column; j++) {
-        //         let currentCell = new Cell(i, j)
-        //         if (boardTbl[i][j] == 1) {
-        //             let count = currentCell.getNeighbour(boardTbl, row, column)
-        //             if (count < 2 || count > 3)
-        //                 cellsModified.push([i, j, 0])
-        //         }
-        //         else {
-        //             if (currentCell.getNeighbour(boardTbl, row, column) == 3) {
-        //                 cellsModified.push([i, j, 1])
-        //             }
-        //         }
-        //     }
-        // }
+    scanBoard() {
 
         const cellsBoosted = this.table.flatMap((renglon, i) => {
             return renglon.map((zelda, j) => {
@@ -57,15 +40,13 @@ export default class Board {
             })
         }).filter(x => x)
 
-        //console.log(cellsModified)
-        console.log(cellsBoosted)
         return cellsBoosted
     }
 
     calcNextGen() {
-        let life = this.scanBoard(this.table, this.row, this.column)
+        let life = this.scanBoard()
 
-        life.cellsModified.forEach(cell => {
+        life.forEach(cell => {
             const [x, y, state] = cell
             this.table[x][y] = state
         })
