@@ -36,7 +36,7 @@ export default class Board {
                     return [i, j, 1]
                 }
             })
-        }).filter(x => x)
+        })
 
         return cellsBoosted
     }
@@ -45,6 +45,7 @@ export default class Board {
         let life = this.scanBoard()
 
         life.forEach(cell => {
+            if (!cell) return;
             const [x, y, state] = cell
             this.table[x][y] = state
         })
