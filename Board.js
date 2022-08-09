@@ -30,12 +30,10 @@ export default class Board {
                 const currentCell = new Cell(i, j)
                 if (zelda == 1) {
                     let count = currentCell.getNeighbour(this.table, this.row, this.column)
-                    if (count < 2 || count > 3) return [i, j, 0]
+                    if (![2, 3].includes(count)) return [i, j, 0]
                 }
-                else {
-                    if (currentCell.getNeighbour(this.table, this.row, this.column) == 3) {
-                        return [i, j, 1]
-                    }
+                else if (currentCell.getNeighbour(this.table, this.row, this.column) == 3) {
+                    return [i, j, 1]
                 }
             })
         }).filter(x => x)
