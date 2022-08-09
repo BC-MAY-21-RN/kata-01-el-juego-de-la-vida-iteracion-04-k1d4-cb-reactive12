@@ -22,18 +22,6 @@ export default class Cell {
         }
         return neighbours
     }
-
-    // getNeighbour2ndVersion(board, width, heigth) {
-    //     let neighbours = 0
-
-    //     for (let j = this.y - 1; j <= this.y + 1; j++) {
-
-    //         board[this.x - 1][j]
-    //         board[this.x][j]
-    //         board[this.x + 1][j]
-    //     }
-    //     return neighbours
-    // }
 }
 
 //module.exports = { Cell }
